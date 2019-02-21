@@ -1,5 +1,7 @@
 package com.bilchege.commuteazy.Entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -9,12 +11,16 @@ public class Terminus {
 
     @Id
     @Column(name = "placeID")
+    @JsonProperty("id")
     private String placeID;
     @Column(name = "Address")
+    @JsonProperty("name")
     private String name;
     @Column(name = "latitude")
+    @JsonProperty("latitude")
     private double latitude;
     @Column(name = "longitude")
+    @JsonProperty("longitude")
     private double longitude;
 
     @ManyToMany(targetEntity = Operator.class,fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE},mappedBy = "termini")
@@ -23,7 +29,7 @@ public class Terminus {
     public Terminus() {
     }
 
-    public Terminus(String placeID, String name, double latitude, double longitude, Set operators) {
+    public Terminus(String placeID, String name, double latitude, double longitude, Set<Operator> operators) {
         this.placeID = placeID;
         this.name = name;
         this.latitude = latitude;
@@ -35,11 +41,11 @@ public class Terminus {
         return placeID;
     }
 
-    public Set getOperators() {
+    public Set<Operator> getOperators() {
         return operators;
     }
 
-    public void setOperators(Set operators) {
+    public void setOperators(Set<Operator> operators) {
         this.operators = operators;
     }
 

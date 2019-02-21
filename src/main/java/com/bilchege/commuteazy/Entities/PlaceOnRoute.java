@@ -1,5 +1,7 @@
 package com.bilchege.commuteazy.Entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,12 +12,16 @@ public class PlaceOnRoute {
 
     @Id
     @Column(name = "placeID")
+    @JsonProperty("id")
     private String placeID;
     @Column(name = "Name")
+    @JsonProperty("name")
     private String address;
     @Column(name = "latitude")
+    @JsonProperty("latitude")
     private double latitude;
     @Column(name = "longitude")
+    @JsonProperty("longitude")
     private double longitude;
 
     @ManyToMany(targetEntity = Operator.class,fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE},mappedBy = "placesSet")
@@ -24,7 +30,7 @@ public class PlaceOnRoute {
     public PlaceOnRoute() {
     }
 
-    public PlaceOnRoute(String placeID, String address, double latitude, double longitude, Set operators) {
+    public PlaceOnRoute(String placeID, String address, double latitude, double longitude, Set<Operator> operators) {
         this.placeID = placeID;
         this.address = address;
         this.latitude = latitude;
@@ -36,11 +42,11 @@ public class PlaceOnRoute {
         return placeID;
     }
 
-    public Set getOperators() {
+    public Set<Operator> getOperators() {
         return operators;
     }
 
-    public void setOperators(Set operators) {
+    public void setOperators(Set<Operator> operators) {
         this.operators = operators;
     }
 

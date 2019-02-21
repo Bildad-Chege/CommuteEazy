@@ -25,7 +25,18 @@ public class OperatorService {
     }
 
     public Optional<Operator> getOperator(Long id){
-        return operatorRepository.findById(id);
+        Operator o = new Operator();
+        operatorRepository.findById(id).ifPresent(operator ->{
+            o.setOperatorID(operator.getOperatorID());
+            o.setOperatorName(operator.getOperatorName());
+            o.setEmail(operator.getEmail());
+            o.setPhone(operator.getPhone());
+            o.setAccountPassword(operator.getAccountPassword());
+            o.setPlacesSet(operator.getPlacesSet());
+            o.setTermini(operator.getTermini());
+                }
+                );
+        return Optional.ofNullable(o);
     }
 
     public void addOperator(Operator operator){
