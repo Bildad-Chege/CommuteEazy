@@ -1,10 +1,13 @@
 package com.bilchege.commuteazy.Controllers;
 
 import com.bilchege.commuteazy.Entities.Operator;
+import com.bilchege.commuteazy.ResponseObj;
 import com.bilchege.commuteazy.Services.OperatorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,17 +23,17 @@ public class OperatorController {
     }
 
     @RequestMapping("/operators")
-    public List<Operator> getOperators(){
+    public HashSet<Operator> getOperators(){
         return operatorService.getOperators();
     }
 
-    @RequestMapping("/operatorsonroute/{origin}/{destination}")
-    public List<Operator> opertorsOnRoute(@PathVariable("origin") String origin,@PathVariable("destination") String destination){
-        return operatorService.operatorsOnRoute(origin,destination);
+    @RequestMapping("/operatorsonroute")
+    public List<ResponseObj> opertorsOnRoute(){
+        return operatorService.operatorsOnRoute();
     }
 
     @RequestMapping("/getoperator/{id}")
-    public Optional<Operator> getOperator(@PathVariable Long id){
+    public Optional<Operator> getOperator(@PathVariable("id") Long id){
         return operatorService.getOperator(id);
     }
 

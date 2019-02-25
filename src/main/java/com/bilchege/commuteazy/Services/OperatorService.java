@@ -2,10 +2,12 @@ package com.bilchege.commuteazy.Services;
 
 import com.bilchege.commuteazy.Entities.Operator;
 import com.bilchege.commuteazy.Repositories.OperatorRepository;
+import com.bilchege.commuteazy.ResponseObj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,25 +20,15 @@ public class OperatorService {
     @Autowired
     private PlaceService placeService;
 
-    public List<Operator> getOperators(){
-        List<Operator> thisList = new ArrayList<>();
+    public HashSet<Operator> getOperators(){
+        HashSet<Operator> thisList = new HashSet<>();
         operatorRepository.findAll().forEach(thisList::add);
         return thisList;
     }
 
     public Optional<Operator> getOperator(Long id){
         Operator o = new Operator();
-        operatorRepository.findById(id).ifPresent(operator ->{
-            o.setOperatorID(operator.getOperatorID());
-            o.setOperatorName(operator.getOperatorName());
-            o.setEmail(operator.getEmail());
-            o.setPhone(operator.getPhone());
-            o.setAccountPassword(operator.getAccountPassword());
-            o.setPlacesSet(operator.getPlacesSet());
-            o.setTermini(operator.getTermini());
-                }
-                );
-        return Optional.ofNullable(o);
+        return operatorRepository.findById(id);
     }
 
     public void addOperator(Operator operator){
@@ -47,8 +39,8 @@ public class OperatorService {
         operatorRepository.save(operator);
     }
 
-    public List<Operator> operatorsOnRoute(String origin,String destination){
-        return operatorRepository.fetchOperatorOnRoute(origin,destination);
+    public List<ResponseObj> operatorsOnRoute(){
+        return operatorRepository.fetchOperatorOnRoute();
     }
 
 }

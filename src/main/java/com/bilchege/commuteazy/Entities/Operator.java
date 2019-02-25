@@ -1,5 +1,6 @@
 package com.bilchege.commuteazy.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -7,33 +8,33 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "operators")
 public class Operator {
 
-    @Id
+      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Operator_id")
     //@JsonProperty("id")
     private Long operatorID;
-    @Column(name = "Name")
+    @Column(name = "name")
     @JsonProperty("name")
     private String operatorName;
-    @Column(name = "Email")
+    @Column(name = "email")
     @JsonProperty("email")
     private String email;
     @Column(name = "phone")
     @JsonProperty("phone")
     private String phone;
-    @Column(name = "accountPassword")
+    @Column(name = "account_Password")
     @JsonProperty("password")
     private String accountPassword;
 
-    @ManyToMany(targetEntity = PlaceOnRoute.class,fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @JsonIgnore
+    @ManyToMany(targetEntity = PlaceOnRoute.class,fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST})
     @JoinTable(name = "operator_place",joinColumns = {@JoinColumn(name = "operatorID")},inverseJoinColumns = {@JoinColumn(name = "placeID")})
     @JsonProperty("places")
     private Set<PlaceOnRoute> placesSet = new HashSet<>();
 
-    @ManyToMany(targetEntity = Terminus.class,fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @ManyToMany(targetEntity = Terminus.class,fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
     @JoinTable(name = "operator_terminus",joinColumns = {@JoinColumn(name = "operatorID")},inverseJoinColumns = {@JoinColumn(name = "placeID")})
     @JsonProperty("termini")
     private Set<Terminus> termini = new HashSet<>();
@@ -41,7 +42,7 @@ public class Operator {
     public Operator() {
     }
 
-    public Operator(Long operatorID,String operatorName, String email, String phone, String accountPassword, Set<PlaceOnRoute> placesSet, Set<Terminus> termini) {
+    public Operator(Long operatorID, String operatorName, String email, String phone, String accountPassword, Set<PlaceOnRoute> placesSet, Set<Terminus> termini) {
         this.operatorName = operatorName;
         this.operatorID = operatorID;
         this.email = email;

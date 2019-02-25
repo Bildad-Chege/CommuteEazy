@@ -1,5 +1,6 @@
 package com.bilchege.commuteazy.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -24,7 +25,8 @@ public class PlaceOnRoute {
     @JsonProperty("longitude")
     private double longitude;
 
-    @ManyToMany(targetEntity = Operator.class,fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE},mappedBy = "placesSet")
+    @JsonIgnore
+    @ManyToMany(targetEntity = Operator.class,fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST},mappedBy = "placesSet")
     private Set<Operator> operators = new HashSet<>();
 
     public PlaceOnRoute() {

@@ -1,8 +1,10 @@
 package com.bilchege.commuteazy.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,8 +25,9 @@ public class Terminus {
     @JsonProperty("longitude")
     private double longitude;
 
-    @ManyToMany(targetEntity = Operator.class,fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE},mappedBy = "termini")
-    private Set<Operator> operators;
+    @JsonIgnore
+    @ManyToMany(targetEntity = Operator.class,fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST},mappedBy = "termini")
+    private Set<Operator> operators = new HashSet<>();
 
     public Terminus() {
     }

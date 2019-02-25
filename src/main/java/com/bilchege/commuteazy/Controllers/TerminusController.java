@@ -5,6 +5,7 @@ import com.bilchege.commuteazy.Services.TerminusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class TerminusController {
     }
 
     @RequestMapping("/gettermini")
-    public List<Terminus> getTermini(){
+    public HashSet<Terminus> getTermini(){
         return terminusService.getTermini();
     }
 

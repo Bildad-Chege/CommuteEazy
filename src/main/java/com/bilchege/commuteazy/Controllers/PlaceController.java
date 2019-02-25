@@ -5,6 +5,7 @@ import com.bilchege.commuteazy.Services.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +21,7 @@ public class PlaceController {
     }
 
     @RequestMapping("/getplaces")
-    public List<PlaceOnRoute> getPlaces(){
+    public HashSet<PlaceOnRoute> getPlaces(){
         return placeService.getPlaces();
     }
 

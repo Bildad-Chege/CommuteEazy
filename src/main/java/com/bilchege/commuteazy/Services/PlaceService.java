@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,8 +24,8 @@ public class PlaceService {
         return placeRepository.findById(id);
     }
 
-    public List<PlaceOnRoute> getPlaces(){
-        List<PlaceOnRoute> thisList = new ArrayList<>();
+    public HashSet<PlaceOnRoute> getPlaces(){
+        HashSet<PlaceOnRoute> thisList = new HashSet<>();
         placeRepository.findAll().forEach(thisList::add);
         return thisList;
     }
