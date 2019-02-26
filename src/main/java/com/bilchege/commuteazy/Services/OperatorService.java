@@ -39,8 +39,8 @@ public class OperatorService {
         operatorRepository.save(operator);
     }
 
-    public List<ResponseObj> operatorsOnRoute(){
-        return operatorRepository.fetchOperatorOnRoute();
+    public List<ResponseObj> operatorsOnRoute(String origin,String destination){
+        return operatorRepository.fetchOperatorOnRoute(origin,destination);
     }
 
 }

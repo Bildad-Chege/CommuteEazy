@@ -27,9 +27,9 @@ public class OperatorController {
         return operatorService.getOperators();
     }
 
-    @RequestMapping("/operatorsonroute")
-    public List<ResponseObj> opertorsOnRoute(){
-        return operatorService.operatorsOnRoute();
+    @RequestMapping(path="/operatorsonroute/{origin}/{destination}")
+    public List<ResponseObj> opertorsOnRoute(@PathVariable("origin")String origin,@PathVariable("destination")String destination){
+        return operatorService.operatorsOnRoute(origin,destination);
     }
 
     @RequestMapping("/getoperator/{id}")
