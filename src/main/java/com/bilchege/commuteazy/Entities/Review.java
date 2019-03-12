@@ -8,7 +8,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 
 @Entity
-public class Reviews {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +30,11 @@ public class Reviews {
     @JsonIgnore
     private User user;
 
-    public Reviews() {
+    public Review() {
 
     }
 
-    public Reviews(String comment, Operator operator, User user) {
+    public Review(String comment, Operator operator, User user) {
         this.comment = comment;
         this.operator = operator;
         this.user = user;
