@@ -1,6 +1,7 @@
 package com.bilchege.commuteazy.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -18,15 +19,19 @@ public class Review {
     @JsonProperty("comment")
     private String comment;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "operatorID")
+    @JsonProperty("operator")
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonManagedReference
     @JsonIgnore
     private Operator operator;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "userID")
+    @JsonProperty("user")
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonManagedReference
     @JsonIgnore
     private User user;
 

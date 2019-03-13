@@ -24,6 +24,11 @@ public class UserController {
         return userService.getUser(id);
     }
 
+    @RequestMapping("/login/{username}/{password}")
+    public Optional<User> login(@PathVariable("username")String username, @PathVariable("password")String password){
+        return userService.login(username,password);
+    }
+
     @RequestMapping("/getUsers")
     public List<User> getUsers(){
         return userService.getUsers();

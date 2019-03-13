@@ -20,7 +20,7 @@ public class ReviewController {
     }
 
     @RequestMapping("/getReview/{id}")
-    public Optional<Review> getReview(@PathVariable Long id){
+    public Optional<Review> getReview(@PathVariable("id") Long id){
         return reviewService.getReview(id);
     }
 
@@ -30,7 +30,7 @@ public class ReviewController {
     }
 
     @RequestMapping("/reviewsbyuser/{id}")
-    public List<Review> getReviewsByUser(@PathVariable Long userID){
+    public List<Review> getReviewsByUser(@PathVariable("id") Long userID){
         return reviewService.getReviewbyUser(userID);
     }
 
@@ -45,12 +45,12 @@ public class ReviewController {
     }
 
     @RequestMapping("/updatereview/{id}")
-    public void updateReview(@RequestBody Review review,@PathVariable Long id){
+    public void updateReview(@RequestBody Review review,@PathVariable("id") Long id){
         reviewService.updateReview(review,id);
     }
 
     @RequestMapping("/deletereview/{id}")
-    public void deleteReview(@PathVariable Long id){
+    public void deleteReview(@PathVariable("id") Long id){
         reviewService.deleteReview(id);
     }
 }

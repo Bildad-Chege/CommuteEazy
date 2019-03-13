@@ -1,8 +1,11 @@
 package com.bilchege.commuteazy.Entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -30,18 +33,32 @@ public class User {
     @JsonProperty("password")
     private String accountPassword;
 
+//    @OneToMany(mappedBy = "reviewID")
+//    @Nullable
+//    private List<Review> reviews = new ArrayList<>();
+
     public User() {
 
     }
 
-    public User(String firstName, String lastName, String userName, Long phone, String email, String accountPassword) {
+    public User(String firstName, String lastName, String userName, Long phone, String email, String accountPassword, @Nullable List<Review> reviews) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.phone = phone;
         this.email = email;
         this.accountPassword = accountPassword;
+        //this.reviews = reviews;
     }
+
+//    @Nullable
+//    public List<Review> getReviews() {
+//        return reviews;
+//    }
+
+//    public void setReviews(@Nullable List<Review> reviews) {
+//        this.reviews = reviews;
+//    }
 
     public Long getId() {
         return id;

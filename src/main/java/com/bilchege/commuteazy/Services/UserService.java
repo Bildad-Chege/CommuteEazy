@@ -30,6 +30,12 @@ public class UserService {
         return users;
     }
 
+    public Optional<User> login(String userName,String password){
+        Optional<User> response = Optional.of(new User());
+        response = userRepository.findUserByUserNameAndAccountPassword(userName,password);
+        return response;
+    }
+
     public void updateUser(Long id,User user){
         userRepository.save(user);
     }

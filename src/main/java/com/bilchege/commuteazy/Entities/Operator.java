@@ -2,9 +2,12 @@ package com.bilchege.commuteazy.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -39,18 +42,31 @@ public class Operator {
     @JsonProperty("termini")
     private Set<Terminus> termini = new HashSet<>();
 
+//    @OneToMany(mappedBy = "reviewID")
+//    @Nullable
+//    private List<Review> reviews = new ArrayList<>();
+
     public Operator() {
     }
 
-    public Operator(Long operatorID, String operatorName, String email, String phone, String accountPassword, Set<PlaceOnRoute> placesSet, Set<Terminus> termini) {
+    public Operator(String operatorName, String email, String phone, String accountPassword, Set<PlaceOnRoute> placesSet, Set<Terminus> termini, @Nullable List<Review> reviews) {
         this.operatorName = operatorName;
-        this.operatorID = operatorID;
         this.email = email;
         this.phone = phone;
         this.accountPassword = accountPassword;
         this.placesSet = placesSet;
         this.termini = termini;
+        //this.reviews = reviews;
     }
+
+//    @Nullable
+//    public List<Review> getReviews() {
+//        return reviews;
+//    }
+
+//    public void setReviews(@Nullable List<Review> reviews) {
+//        this.reviews = reviews;
+//    }
 
     public Long getOperatorID() {
         return operatorID;
