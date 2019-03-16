@@ -1,6 +1,8 @@
 package com.bilchege.commuteazy.Services;
 
+import com.bilchege.commuteazy.Entities.Operator;
 import com.bilchege.commuteazy.Entities.Review;
+import com.bilchege.commuteazy.Entities.User;
 import com.bilchege.commuteazy.Repositories.ReviewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,21 +25,21 @@ public class ReviewService {
         return reviewsRepository.findById(id);
     }
 
-    public List<Review> getReviewbyUser(Long userID){
+    public List<Review> getReviewbyUser(User user){
         List<Review> reviews = new ArrayList<>();
-        reviewsRepository.findReviewsByUser(userID).forEach(reviews::add);
+        reviewsRepository.findReviewsByUser(user).forEach(reviews::add);
         return reviews;
     }
 
-    public List<Review> getReviewbyOperator(Long operatorID){
+    public List<Review> getReviewbyOperator(Operator operator){
         List<Review> reviews = new ArrayList<>();
-        reviewsRepository.findReviewsByOperator(operatorID).forEach(reviews::add);
+        reviewsRepository.findReviewsByOperator(operator).forEach(reviews::add);
         return reviews;
     }
 
-    public List<Review> getReviewbyOperatorAndUser(Long operatorID,Long userID){
+    public List<Review> getReviewbyOperatorAndUser(Operator operator,User user){
         List<Review> reviews = new ArrayList<>();
-        reviewsRepository.findReviewsByOperatorAndUser(operatorID,userID).forEach(reviews::add);
+        reviewsRepository.findReviewsByOperatorAndUser(operator,user).forEach(reviews::add);
         return reviews;
     }
 

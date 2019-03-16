@@ -32,12 +32,13 @@ public class Operator {
     private String accountPassword;
 
     @JsonIgnore
-    @ManyToMany(targetEntity = PlaceOnRoute.class,fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST})
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "operator_place",joinColumns = {@JoinColumn(name = "operatorID")},inverseJoinColumns = {@JoinColumn(name = "placeID")})
     @JsonProperty("places")
     private Set<PlaceOnRoute> placesSet = new HashSet<>();
 
-    @ManyToMany(targetEntity = Terminus.class,fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
+    @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "operator_terminus",joinColumns = {@JoinColumn(name = "operatorID")},inverseJoinColumns = {@JoinColumn(name = "placeID")})
     @JsonProperty("termini")
     private Set<Terminus> termini = new HashSet<>();

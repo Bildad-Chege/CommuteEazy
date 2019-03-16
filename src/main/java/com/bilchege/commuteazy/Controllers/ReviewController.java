@@ -1,6 +1,8 @@
 package com.bilchege.commuteazy.Controllers;
 
+import com.bilchege.commuteazy.Entities.Operator;
 import com.bilchege.commuteazy.Entities.Review;
+import com.bilchege.commuteazy.Entities.User;
 import com.bilchege.commuteazy.Services.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,18 +32,18 @@ public class ReviewController {
     }
 
     @RequestMapping("/reviewsbyuser/{id}")
-    public List<Review> getReviewsByUser(@PathVariable("id") Long userID){
-        return reviewService.getReviewbyUser(userID);
+    public List<Review> getReviewsByUser(@PathVariable("id") User user){
+        return reviewService.getReviewbyUser(user);
     }
 
     @RequestMapping("/reviewsforoperator/{id}")
-    public List<Review> getReviewsbyOperator(@PathVariable Long operatorID){
-        return reviewService.getReviewbyOperator(operatorID);
+    public List<Review> getReviewsbyOperator(@PathVariable Operator operator){
+        return reviewService.getReviewbyOperator(operator);
     }
 
     @RequestMapping("/reviewsforoperator/{opid}/byuser/{uid}")
-    public List<Review> getReviewsforOperatorbyUser(@PathVariable("opid") Long operatorID,@PathVariable("uid") Long userID){
-        return reviewService.getReviewbyOperatorAndUser(operatorID, userID);
+    public List<Review> getReviewsforOperatorbyUser(@PathVariable("opid") Operator operator,@PathVariable("uid") User user){
+        return reviewService.getReviewbyOperatorAndUser(operator, user);
     }
 
     @RequestMapping("/updatereview/{id}")

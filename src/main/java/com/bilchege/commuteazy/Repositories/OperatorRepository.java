@@ -10,4 +10,5 @@ import java.util.List;
 public interface OperatorRepository extends CrudRepository<Operator,Long> {
     @Query("select new com.bilchege.commuteazy.ResponseObj(o.operatorName,p.address,p.latitude,p.longitude) from Operator o inner join o.placesSet p where p.placeID = ?1 or p.placeID = ?2 and p.placeID = ?1")
     List<ResponseObj> fetchOperatorOnRoute(String origin,String destination);
+
 }

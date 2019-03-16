@@ -26,7 +26,7 @@ public class PlaceOnRoute {
     private double longitude;
 
     @JsonIgnore
-    @ManyToMany(targetEntity = Operator.class,fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST},mappedBy = "placesSet")
+    @ManyToMany(mappedBy = "placesSet")
     private Set<Operator> operators = new HashSet<>();
 
     public PlaceOnRoute() {

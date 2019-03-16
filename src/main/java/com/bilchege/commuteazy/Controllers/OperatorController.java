@@ -1,6 +1,8 @@
 package com.bilchege.commuteazy.Controllers;
 
 import com.bilchege.commuteazy.Entities.Operator;
+import com.bilchege.commuteazy.Entities.PlaceOnRoute;
+import com.bilchege.commuteazy.Entities.Terminus;
 import com.bilchege.commuteazy.ResponseObj;
 import com.bilchege.commuteazy.Services.OperatorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 public class OperatorController {
