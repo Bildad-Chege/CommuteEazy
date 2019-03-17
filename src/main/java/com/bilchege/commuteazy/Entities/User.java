@@ -1,5 +1,6 @@
 package com.bilchege.commuteazy.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.lang.Nullable;
 
@@ -33,10 +34,6 @@ public class User {
     @JsonProperty("password")
     private String accountPassword;
 
-//    @OneToMany(mappedBy = "reviewID")
-//    @Nullable
-//    private List<Review> reviews = new ArrayList<>();
-
     public User() {
 
     }
@@ -50,15 +47,6 @@ public class User {
         this.accountPassword = accountPassword;
         //this.reviews = reviews;
     }
-
-//    @Nullable
-//    public List<Review> getReviews() {
-//        return reviews;
-//    }
-
-//    public void setReviews(@Nullable List<Review> reviews) {
-//        this.reviews = reviews;
-//    }
 
     public Long getId() {
         return id;

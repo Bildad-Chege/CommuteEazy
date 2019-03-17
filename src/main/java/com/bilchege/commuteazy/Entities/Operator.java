@@ -31,6 +31,10 @@ public class Operator {
     @JsonProperty("password")
     private String accountPassword;
 
+    @OneToMany(mappedBy = "operator")
+    @JsonIgnore
+    private List<Feed> updateFeeds = new ArrayList<>();
+
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "operator_place",joinColumns = {@JoinColumn(name = "operatorID")},inverseJoinColumns = {@JoinColumn(name = "placeID")})
@@ -60,7 +64,15 @@ public class Operator {
         //this.reviews = reviews;
     }
 
-//    @Nullable
+    public List<Feed> getUpdateFeeds() {
+        return updateFeeds;
+    }
+
+    public void setUpdateFeeds(List<Feed> updateFeeds) {
+        this.updateFeeds = updateFeeds;
+    }
+
+    //    @Nullable
 //    public List<Review> getReviews() {
 //        return reviews;
 //    }
