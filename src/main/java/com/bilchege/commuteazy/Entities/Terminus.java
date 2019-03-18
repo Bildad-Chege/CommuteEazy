@@ -26,7 +26,7 @@ public class Terminus {
     private double longitude;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "termini")
+    @ManyToMany(mappedBy = "termini",cascade = CascadeType.PERSIST)
     private Set<Operator> operators = new HashSet<>();
 
     public Terminus() {

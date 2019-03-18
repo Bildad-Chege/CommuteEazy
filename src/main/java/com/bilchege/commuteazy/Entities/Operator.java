@@ -35,13 +35,13 @@ public class Operator {
     @JsonIgnore
     private List<Feed> updateFeeds = new ArrayList<>();
 
+    @ManyToMany(cascade = {CascadeType.MERGE})
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "operator_place",joinColumns = {@JoinColumn(name = "operatorID")},inverseJoinColumns = {@JoinColumn(name = "placeID")})
     @JsonProperty("places")
-    private Set<PlaceOnRoute> placesSet = new HashSet<>();
+    private Set<PlaceOnRoute> places = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE})
     @JsonIgnore
     @JoinTable(name = "operator_terminus",joinColumns = {@JoinColumn(name = "operatorID")},inverseJoinColumns = {@JoinColumn(name = "placeID")})
     @JsonProperty("termini")
@@ -54,12 +54,12 @@ public class Operator {
     public Operator() {
     }
 
-    public Operator(String operatorName, String email, String phone, String accountPassword, Set<PlaceOnRoute> placesSet, Set<Terminus> termini, @Nullable List<Review> reviews) {
+    public Operator(String operatorName, String email, String phone, String accountPassword, Set<PlaceOnRoute> places, Set<Terminus> termini, @Nullable List<Review> reviews) {
         this.operatorName = operatorName;
         this.email = email;
         this.phone = phone;
         this.accountPassword = accountPassword;
-        this.placesSet = placesSet;
+        this.places = places;
         this.termini = termini;
         //this.reviews = reviews;
     }
@@ -93,12 +93,12 @@ public class Operator {
         return operatorName;
     }
 
-    public Set<PlaceOnRoute> getPlacesSet() {
-        return placesSet;
+    public Set<PlaceOnRoute> getPlaces() {
+        return places;
     }
 
-    public void setPlacesSet(Set<PlaceOnRoute> placesSet) {
-        this.placesSet = placesSet;
+    public void setPlaces(Set<PlaceOnRoute> places) {
+        this.places = places;
     }
 
     public Set<Terminus> getTermini() {
