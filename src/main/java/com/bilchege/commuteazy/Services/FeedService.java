@@ -24,7 +24,8 @@ public class FeedService {
     public List<Feed> getAllFeeds(){
         List<Feed> feeds = new ArrayList<>();
         feedRepository.findAll().forEach(feeds::add);
-        Collections.sort(feeds,new SortByDate());
+        SortByDate s = new SortByDate();
+        Collections.sort(feeds,s.reversed());
         return feeds;
     }
 
@@ -38,6 +39,8 @@ public class FeedService {
         public int compare(Feed o1, Feed o2) {
             return (int) (o1.getDateCreated().getTime()-o2.getDateCreated().getTime());
         }
+
+
     }
 
 }

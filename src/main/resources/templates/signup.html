@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from previews.customer.envatousercontent.com/files/242472945/register 1.1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Mar 2019 09:42:58 GMT -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Register</title>
+    <link th:href="@{https://previews.customer.envatousercontent.com/files/242472945/css/demo.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{https://previews.customer.envatousercontent.com/files/242472945/css/component.css}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link th:href="@{/css/all.css}" rel="stylesheet" />
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" th:href="@{https://previews.customer.envatousercontent.com/files/242472945/index.html}">UNEEK</a>
+
+  <!--<div class="collapse navbar-collapse" id="navbarTogglerDemo03">-->
+    <!--<ul class="navbar-nav mr-auto mt-2 mt-lg-0">-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="https://previews.customer.envatousercontent.com/files/242472945/index.html">Checkout</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="https://previews.customer.envatousercontent.com/files/242472945/payment.html">Payment</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="https://previews.customer.envatousercontent.com/files/242472945/register 1.html">Register 1</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item active">-->
+        <!--<a class="nav-link" href="register%201.1.html">Register 1.1</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="https://previews.customer.envatousercontent.com/files/242472945/contact 1.html">Contact 1</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="https://previews.customer.envatousercontent.com/files/242472945/contact 1.1.html">Contact 1.1</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="https://previews.customer.envatousercontent.com/files/242472945/feedback.html">Feedback</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="https://previews.customer.envatousercontent.com/files/242472945/login 1.html">Login 1</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="https://previews.customer.envatousercontent.com/files/242472945/login 1.1.html">Login 1.1</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="https://previews.customer.envatousercontent.com/files/242472945/subscribe.html">Subscribe</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="https://previews.customer.envatousercontent.com/files/242472945/reset-password.html">Reset Password</a>-->
+      <!--</li>-->
+      <!--<li class="nav-item">-->
+        <!--<a class="nav-link" href="https://previews.customer.envatousercontent.com/files/242472945/forgot-password.html">Forgot Password</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+</nav>
+<div class="container">
+  <div class="col-md-4 m-auto">
+    <form role="form" class="form-width" id="form">
+      <h4 class="form-header text-center">Register</h4>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Name" id="operator_name"/>
+        <i class="fa fa-user iconalign"></i> </div>
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="E-Mail" id="operator_email"/>
+        <i class="fa fa-envelope iconalign"></i> </div>
+      <div class="form-group">
+        <input type="number" class="form-control" placeholder="Phone Number" id="operator_phone"/>
+        <i class="fa fa-phone iconalign"></i> </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" id="operator_password"/>
+        <i class="fa fa-lock iconalign"></i> </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Confirm Password" id="confirm_operator_password"/>
+        <i class="fa fa-lock iconalign"></i> </div>
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="customCheck2" />
+        <label class="custom-control-label" for="customCheck2">I agree with the terms &amp; conditions.</label>
+      </div>
+      <div class="form-group text-center">
+
+        <button class="btn btn-default col-md-6" type="submit" id="btn_register" onclick="save_operator_data()">Register</button>
+      </div>
+      <hr />
+
+      <div class="text-center">
+        <text>Already have an account ?</text>
+        &nbsp;<a href="#">Login</a> </div>
+    </form>
+  </div>
+</div>
+<script th:src="@{/js/controller.js}"></script>
+</body>
+
+<!-- Mirrored from previews.customer.envatousercontent.com/files/242472945/register 1.1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Mar 2019 09:43:07 GMT -->
+</html>
+

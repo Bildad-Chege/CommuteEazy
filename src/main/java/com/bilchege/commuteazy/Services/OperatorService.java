@@ -31,8 +31,8 @@ public class OperatorService {
         return operatorRepository.findById(id);
     }
 
-    public void addOperator(Operator operator){
-        operatorRepository.save(operator);
+    public Operator addOperator(Operator operator){
+        return operatorRepository.save(operator);
     }
 
     public void updateOperator(Long id,Operator operator){
