@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class UserController {
         return userService.addUser(user);
     }
 
-    @RequestMapping("/getOperator/{id}")
+    @RequestMapping("/getuser/{id}")
     public Optional<User> getUser(@PathVariable Long id){
         return userService.getUser(id);
     }

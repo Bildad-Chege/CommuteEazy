@@ -28,7 +28,7 @@ public class Terminus {
 
     @JsonMerge
     @JsonIgnore
-    @ManyToMany(mappedBy = "termini",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "termini",fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     private Set<Operator> operators = new HashSet<>();
 
     public Terminus() {

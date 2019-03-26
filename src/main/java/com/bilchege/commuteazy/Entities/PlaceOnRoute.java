@@ -28,7 +28,7 @@ public class PlaceOnRoute {
 
     @JsonMerge
     @JsonIgnore
-    @ManyToMany(mappedBy = "places",fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "places",fetch = FetchType.EAGER,cascade = CascadeType.MERGE)
     private Set<Operator> operators = new HashSet<>();
 
     public PlaceOnRoute() {

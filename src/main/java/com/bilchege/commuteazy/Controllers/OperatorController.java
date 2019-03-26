@@ -16,19 +16,31 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
+@RequestMapping("/operators")
 public class OperatorController {
 
     @Autowired
     private OperatorService operatorService;
 
-    @RequestMapping(method = RequestMethod.POST,value = "/addOperator",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public Operator addOperator(Operator operator){
+//    @RequestMapping(method = RequestMethod.POST,value = "/addOperator",
+//            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+//    public Operator addOperator(Operator operator){
+//        return operatorService.addOperator(operator);
+//    }
+
+    @RequestMapping(method = RequestMethod.POST,value = "/addOperator")
+    public Operator addOperator(@RequestBody Operator operator){
         return operatorService.addOperator(operator);
     }
 
-    @RequestMapping("/operators")
+    @RequestMapping("/getoperators")
     public HashSet<Operator> getOperators(){
         return operatorService.getOperators();
+    }
+
+    @RequestMapping("/login/{username}/{password}")
+    public Optional<Operator> login(@PathVariable("username") String name, @PathVariable("password") String password){
+        return operatorService.login(name,password);
     }
 
     @RequestMapping(path="/operatorsonroute/{origin}/{destination}")

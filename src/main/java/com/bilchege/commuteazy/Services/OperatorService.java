@@ -35,6 +35,10 @@ public class OperatorService {
         return operatorRepository.save(operator);
     }
 
+    public Optional<Operator> login(String name,String password){
+        return operatorRepository.findOperatorByOperatorNameAndAccountPassword(name,password);
+    }
+
     public void updateOperator(Long id,Operator operator){
         operatorRepository.save(operator);
     }
